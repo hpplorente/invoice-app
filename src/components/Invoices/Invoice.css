@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&display=swap");
+
+.header-container {
+  width: 730px;
+  height: 59px;
+  /* margin-left: 252px; */
+  margin-top: 72px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-container {
+  width: 730px;
+  /* margin-left: 252px; */
+  margin-top: 65px;
+}
+
+.invoice-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.invoice-title h3 {
+  font-family: "League Spartan", sans-serif;
+  color: #0c0e16;
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -1px;
+  line-height: 36px;
+  margin-bottom: 0px;
+}
+
+.invoice-title p {
+  margin-top: 8px;
+  font-style: "League Spartan", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #888eb0;
+}
+
+.invoice-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.invoice-btn button {
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  color: white;
+  width: 150px;
+  height: 48px;
+  background-color: #7c5dfa;
+  border-style: none;
+  border-radius: 50px;
+
+  margin-top: 35px;
+  margin-left: 40px;
+}
+
+.invoice-btn p {
+  font-family: "League Spartan", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+
+  margin-top: 50px;
+  margin-right: 40px;
+}
+
+.arrow {
+  border: 2px solid #7c5dfa;
+  width: 0.46px;
+  height: 4.23px;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.item-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  width: 730px;
+  height: 72px;
+  border-radius: 8px;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  margin-bottom: 16px;
+}
+
+.item-container p {
+  margin-top: 29px;
+  margin-left: 32px;
+  margin-right: 32px;
+}
+
+.back-btn {
+  font-family: "League Spartan", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  color: #0c0e16;
+}
+
+.details-header-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  width: 730px;
+  height: 88px;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  border-radius: 8px;
+}
+
+.details-status {
+  width: 159px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.details-btns {
+  display: flex;
+  justify-content: space-between;
+  width: 309px;
+  margin-top: 20px;
+  margin-right: 32px;
+}
+
+.details-btns button {
+  height: 48px;
+  border-radius: 50px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 15px;
+  padding-bottom: 17px;
+}
+
+.invoice-data-container {
+  background-color: white;
+  margin-top: 24px;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  border-radius: 8px;
+}
+
+.sender-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.id--description {
+  margin-left: 48px;
+  margin-top: 48px;
+}
+
+.id--description p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.senderAddress {
+  width: 94px;
+  height: 75px;
+  text-align: right;
+  margin-right: 48px;
+  margin-top: 48px;
+}
+
+.invoice-data-container h6 {
+  font-size: 11px;
+  font-weight: 500;
+  color: #7e88c3;
+
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+}

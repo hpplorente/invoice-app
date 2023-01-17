@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&display=swap");
+.overlay {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  box-sizing: border-box;
+}
+
+.modal-container {
+  width: 719px;
+  background-color: white;
+  border-radius: 4px;
+}
+
+.modal-content {
+  width: 504px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 56px;
+  margin-bottom: 32px;
+}
+
+.modal-container h1 {
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+}
+
+.modal-container h2 {
+  font-family: "League Spartan", sans-serif;
+  color: #7c5dfa;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: -0.25px;
+}
+
+.row-forms {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-container h3 {
+  font-family: "League Spartan", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #7e88c3;
+  letter-spacing: -0.25px;
+  margin-bottom: 10px;
+}
+
+.modal-container input {
+  height: 25px;
+}
+
+.single-input-fields {
+  width: 504px;
+}
+
+.newInvoice-btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 39px;
+}
+
+.newInvoice-btns button {
+  border-radius: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-style: none;
+}
