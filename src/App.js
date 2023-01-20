@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Sidebar from "./components/Sidebar/Sidebar";
 import InvoiceDetails from "./components/Invoices/InvoiceDetails";
@@ -12,7 +12,7 @@ function App() {
         <Sidebar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="invoiceDetails" element={<InvoiceDetails />} />
+          <Route path="/invoiceDetails" element={<InvoiceDetails />} />
         </Routes>
       </Router>
     </div>

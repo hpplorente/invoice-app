@@ -11,8 +11,6 @@ function NewInvoiceModal() {
     invoiceInputHandling,
     addNewInvoice,
     addNewData,
-    senderAddressHandling,
-    clientAddressHandling,
   } = useContext(InvoiceContext);
 
   console.log(addNewData);
@@ -29,31 +27,31 @@ function NewInvoiceModal() {
                 label="Street Address"
                 type="text"
                 classes="single-input-fields"
-                changeHandler={senderAddressHandling}
+                changeHandler={invoiceInputHandling}
                 values={invoiceData.senderAddress.street}
-                names="street"
+                names="senderAddress street"
               />
               <div className="row-forms">
                 <InputField
                   label="City"
                   type="text"
-                  changeHandler={senderAddressHandling}
+                  changeHandler={invoiceInputHandling}
                   values={invoiceData.senderAddress.city}
-                  names="city"
+                  names="senderAddress city"
                 />
                 <InputField
                   label="Post Code"
                   type="text"
-                  changeHandler={senderAddressHandling}
+                  changeHandler={invoiceInputHandling}
                   values={invoiceData.senderAddress.postCode}
-                  names="postCode"
+                  names="senderAddress postCode"
                 />
                 <InputField
                   label="Country"
                   type="text"
-                  changeHandler={senderAddressHandling}
+                  changeHandler={invoiceInputHandling}
                   values={invoiceData.senderAddress.country}
-                  names="country"
+                  names="senderAddress country"
                 />
               </div>
               <h2>Bill to</h2>
@@ -77,37 +75,37 @@ function NewInvoiceModal() {
                 label="Street Address"
                 type="text"
                 classes="single-input-fields"
-                changeHandler={clientAddressHandling}
+                changeHandler={invoiceInputHandling}
                 values={invoiceData.clientAddress.street}
-                names="street"
+                names="clientAddress street"
               />
               <div className="row-forms">
                 <InputField
                   label="City"
                   type="text"
-                  changeHandler={clientAddressHandling}
+                  changeHandler={invoiceInputHandling}
                   values={invoiceData.clientAddress.city}
-                  names="city"
+                  names="clientAddress city"
                 />
                 <InputField
                   label="Post Code"
                   type="text"
-                  changeHandler={clientAddressHandling}
+                  changeHandler={invoiceInputHandling}
                   values={invoiceData.clientAddress.postCode}
-                  names="postCode"
+                  names="clientAddress postCode"
                 />
                 <InputField
                   label="Country"
                   type="text"
-                  changeHandler={clientAddressHandling}
+                  changeHandler={invoiceInputHandling}
                   values={invoiceData.clientAddress.country}
-                  names="country"
+                  names="clientAddress country"
                 />
               </div>
               <div className="row-forms">
                 <InputField
                   label="Invoice Date"
-                  type="text"
+                  type="date"
                   changeHandler={invoiceInputHandling}
                   values={invoiceData.createdAt}
                   names="createdAt"
@@ -121,7 +119,7 @@ function NewInvoiceModal() {
                 />
               </div>
               <InputField
-                label="Project DEscription"
+                label="Project Description"
                 type="text"
                 classes="single-input-fields"
                 changeHandler={invoiceInputHandling}

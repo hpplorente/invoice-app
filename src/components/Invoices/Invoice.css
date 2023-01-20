@@ -141,6 +141,10 @@
   padding-right: 24px;
   padding-top: 15px;
   padding-bottom: 17px;
+  border-style: none;
+  font-size: 12px;
+  font-family: "Spartan", sans-serif;
+  font-weight: 700;
 }
 
 .invoice-data-container {
@@ -166,7 +170,7 @@
 }
 
 .senderAddress {
-  width: 94px;
+  width: 150px;
   height: 75px;
   text-align: right;
   margin-right: 48px;
@@ -180,4 +184,28 @@
 
   margin-top: 2.5px;
   margin-bottom: 2.5px;
+}
+
+.clientDetails-container {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 48px;
+  margin-right: 48px;
+  margin-top: 21px;
+}
+
+.clientDetails-container p {
+  font-size: 15px;
+  font-family: "Spartan", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.3125px;
+  color: #0c0e16;
+  margin-top: 12px;
+}
+
+.itemList {
+  margin: 48px;
+  width: 634px;
+  background-color: #f9fafe;
+  margin-bottom: 48px;
 }

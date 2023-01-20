@@ -1,12 +1,10 @@
 import React, { useState, createContext } from "react";
+import { v4 as uuid } from "uuid";
 
 const InvoiceContext = createContext();
 
 function InvoiceContextProvider(props) {
-  const [newInvoiceModal, setNewInvoiceModal] = useState(false);
-  const [addNewData, setNewData] = useState([]);
-
-  const [invoiceData, setInvoiceData] = useState({
+  const invoiceObject = {
     id: "",
     createdAt: "",
     paymentDue: "",
@@ -27,55 +25,71 @@ function InvoiceContextProvider(props) {
       postCode: "",
       country: "",
     },
-  });
+  };
+  const [newInvoiceModal, setNewInvoiceModal] = useState(false);
+  const [invoiceList, setInvoiceList] = useState([]);
 
+  const [invoiceData, setInvoiceData] = useState(invoiceObject);
+
+  const unique_id = uuid();
+  const invoiceId = unique_id.slice(0, 5);
   /////New Invoice Modal
   const toggleNewInvoice = () => {
-    return setNewInvoiceModal((prevNewInvoiceModal) => !prevNewInvoiceModal);
+    if (newInvoiceModal === false) {
+      setNewInvoiceModal((prevNewInvoiceModal) => !prevNewInvoiceModal);
+      setInvoiceData((prevInvoiceData) => {
+        return {
+          ...prevInvoiceData,
+          id: invoiceId,
+        };
+      });
+    } else {
+      setInvoiceData(invoiceObject);
+      setNewInvoiceModal((prevNewInvoiceModal) => !prevNewInvoiceModal);
+    }
   };
 
   ///New Invoice Modal Change Handling
   const invoiceInputHandling = (e) => {
     const { name, value, type } = e.target;
-    setInvoiceData((prevInvoiceData) => {
-      return {
-        ...prevInvoiceData,
-        [name]: value,
-      };
-    });
-  };
+    const nameSplit = name.split(" ");
 
-  const senderAddressHandling = (e) => {
-    const { name, value, type } = e.target;
-    setInvoiceData((prevInvoiceData) => {
-      return {
-        ...prevInvoiceData,
-        senderAddress: {
-          ...prevInvoiceData.senderAddress,
+    if (nameSplit.length > 1) {
+      nameSplit[0] === "senderAddress"
+        ? setInvoiceData((prevInvoiceData) => {
+            return {
+              ...prevInvoiceData,
+              [nameSplit[0]]: {
+                ...prevInvoiceData.senderAddress,
+                [nameSplit[1]]: value,
+              },
+            };
+          })
+        : setInvoiceData((prevInvoiceData) => {
+            return {
+              ...prevInvoiceData,
+              [nameSplit[0]]: {
+                ...prevInvoiceData.clientAddress,
+                [nameSplit[1]]: value,
+              },
+            };
+          });
+    } else {
+      setInvoiceData((prevInvoiceData) => {
+        return {
+          ...prevInvoiceData,
           [name]: value,
-        },
-      };
-    });
+        };
+      });
+    }
   };
-
-  const clientAddressHandling = (e) => {
-    const { name, value, type } = e.target;
-    setInvoiceData((prevInvoiceData) => {
-      return {
-        ...prevInvoiceData,
-        clientAddress: {
-          ...prevInvoiceData.clientAddress,
-          [name]: value,
-        },
-      };
-    });
-  };
-  ////////////////////////////////////////////////////////////////////////
 
   ////// Adding New Invoice (Save & send)
 
   const addNewInvoice = () => {
-    setNewData((prevNewData) => [...prevNewData, invoiceData]);
+    setNewInvoiceModal((prevNewInvoiceModal) => !prevNewInvoiceModal);
+    setInvoiceData(invoiceObject);
+    setInvoiceList((prevNewData) => [...prevNewData, invoiceData]);
   };
 
   return (
@@ -86,9 +100,8 @@ function InvoiceContextProvider(props) {
         invoiceData,
         invoiceInputHandling,
         addNewInvoice,
-        addNewData,
-        senderAddressHandling,
-        clientAddressHandling,
+        invoiceList,
+        invoiceObject,
       }}
     >
       {props.children}
