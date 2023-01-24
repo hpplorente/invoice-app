@@ -96,12 +96,11 @@ function InvoiceContextProvider(props) {
   ////// Adding New Invoice (Save & send)
 
   const addNewInvoice = () => {
-    setNewInvoiceModal((prevNewInvoiceModal) => !prevNewInvoiceModal);
-    setInvoiceData(invoiceObject);
     // setInvoiceList((prevNewData) => [...prevNewData, invoiceData]);
     Axios.post("http://localhost:3001/invoice/api", invoiceData).then(
       (response) => {
-        console.log("Invoice Created Successfully");
+        setNewInvoiceModal((prevNewInvoiceModal) => !prevNewInvoiceModal);
+        setInvoiceData(invoiceObject);
       }
     );
   };
