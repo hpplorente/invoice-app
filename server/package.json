@@ -1,0 +1,25 @@
+{
+  "name": "invoice-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hpplorente/invoice-app.git"
+  },
+  "author": "Henri Paul Lorente",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hpplorente/invoice-app/issues"
+  },
+  "homepage": "https://github.com/hpplorente/invoice-app#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.4",
+    "nodemon": "^2.0.20"
+  }
+}
