@@ -1,6 +1,7 @@
 .sidebar {
+  position: absolute;
   width: 103px;
-  height: 800px;
+  height: 100vh;
   background-color: #373b53;
   border-radius: 0px 20px 20px 0px;
 }

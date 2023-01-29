@@ -1,33 +1,23 @@
 const express = require("express");
+const colors = require("colors");
+const connectDB = require("./config/db");
+const dotenv = require("dotenv").config();
 const app = express();
 const mongoose = require("mongoose");
 const InvoiceModel = require("./models/Invoice");
+const { errorHandler } = require("./middleware/errorMiddleware");
 const cors = require("cors");
 
-app.use(express.json());
+connectDB();
+
 app.use(cors());
 
-mongoose.connect(
-  "mongodb+srv://hppl444:Invoice123@invoice.nhooxe1.mongodb.net/invoice?retryWrites=true&w=majority"
-);
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.get("/invoice/api", (req, res) => {
-  InvoiceModel.find({}, (err, result) => {
-    if (err) {
-      res.json(err);
-    } else {
-      res.json(result);
-    }
-  });
-});
+app.use("/invoice/api", require("./routes/invoiceRoutes"));
 
-app.post("/invoice/api", async (req, res) => {
-  const invoice = req.body;
-  const newInvoice = new InvoiceModel(invoice);
-  await newInvoice.save();
-
-  res.json(invoice);
-});
+app.use(errorHandler);
 
 app.listen(3001, () => {
   console.log("Server listening on port 3001");

@@ -1,13 +1,19 @@
+* {
+  margin: 0;
+}
+
 .App {
   display: flex;
   background-color: #f2f2f2;
+  overflow-y: hidden;
 }
 
 .content-container {
   width: 730px;
+  height: 100vh;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 64px;
+  margin-top: 10px;
 }
 
 .modal {
