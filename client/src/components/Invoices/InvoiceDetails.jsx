@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import InvoiceButton from "../elements/InvoiceButton";
+import "./InvoiceDetails.css";
 import DeleteInvoiceModal from "../../Modal/DeleteInvoiceModal";
 import EditInvoiceModal from "../../Modal/EditInvoiceModal";
 
@@ -63,17 +65,27 @@ function InvoiceDetails() {
         </div>
         <div className="details-header-container">
           <div className="details-status">
-            <p>Status</p>
-            <p>{invoice.status}</p>
+            <h6>Status</h6>
+            <p className={`status-${invoice.status}`}>
+              <div className={invoice.status}></div>
+              <span>•</span>
+              {invoice.status}
+            </p>
           </div>
           <div className="details-btns">
-            <button onClick={() => setEditInvoiceModal(!editInvoiceModal)}>
-              Edit
-            </button>
-            <button onClick={() => setDeleteInvoiceModal(!deleteInvoiceModal)}>
-              Delete
-            </button>
-            <button>Mark as Paid</button>
+            <InvoiceButton
+              onClick={() => setEditInvoiceModal(!editInvoiceModal)}
+              label={"Edit"}
+              classes={""}
+            />
+
+            <InvoiceButton
+              onClick={() => setDeleteInvoiceModal(!deleteInvoiceModal)}
+              label={"Delete"}
+              classes={""}
+            />
+
+            <InvoiceButton label={"Mark as Paid"} classes={""} onClick={""} />
           </div>
         </div>
         <div className="invoice-data-container">

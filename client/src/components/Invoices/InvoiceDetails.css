@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&display=swap");
+
+.details-header-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  width: 730px;
+  height: 88px;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  border-radius: 8px;
+  margin-top: 32px;
+}
+/* ///////////////////---Status----/////////////////////////////////// */
+.details-status {
+  width: 159px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.details-status h6 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details-status span {
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+.status-pending {
+  width: 104px;
+  height: 40px;
+
+  font-family: "League Spartan", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  color: rgba(255, 143, 0, 1);
+
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(255, 143, 0, 0.06);
+}
+
+.status-paid {
+  width: 104px;
+  height: 40px;
+
+  font-family: "League Spartan", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  color: rgba(51, 214, 159, 1);
+
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(51, 214, 159, 0.06);
+}
+
+.status-draft {
+  width: 104px;
+  height: 40px;
+
+  font-family: "League Spartan", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  color: rgba(55, 59, 83, 1);
+
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(55, 59, 83, 0.06);
+}
+/* ////////////////////////////////////////////////// */
+.details-btns {
+  display: flex;
+  justify-content: space-between;
+  width: 309px;
+  margin-top: 20px;
+  margin-right: 32px;
+}
+
+.details-btns button {
+  height: 48px;
+  border-radius: 50px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 15px;
+  padding-bottom: 17px;
+  border-style: none;
+  font-size: 12px;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+}
+
+.invoice-data-container {
+  background-color: white;
+  margin-top: 24px;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  border-radius: 8px;
+}
+
+.sender-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.id--description {
+  margin-left: 48px;
+  margin-top: 48px;
+}
+
+.id--description p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.senderAddress {
+  width: 150px;
+  height: 75px;
+  text-align: right;
+  margin-right: 48px;
+  margin-top: 48px;
+}
+
+h6 {
+  font-size: 11px;
+  font-weight: 500;
+  color: #7e88c3;
+
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+}
+
+.clientDetails-container {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 48px;
+  margin-right: 48px;
+  margin-top: 21px;
+}
+
+.clientDetails-container p {
+  font-size: 15px;
+  font-family: "Spartan", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.3125px;
+  color: #0c0e16;
+  margin-top: 12px;
+}
+
+.itemList {
+  margin: 48px;
+  width: 634px;
+  background-color: #f9fafe;
+  margin-bottom: 48px;
+}
