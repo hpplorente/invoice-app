@@ -89,7 +89,7 @@
   margin-right: 40px;
 }
 
-.arrow {
+/* .arrow {
   border: 2px solid #7c5dfa;
   width: 0.46px;
   height: 4.23px;
@@ -98,7 +98,7 @@
   padding: 3px;
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
-}
+} */
 
 .item-container {
   display: flex;
@@ -124,13 +124,14 @@
 
 .back-btn {
   display: flex;
-  justify-content: space-between;
-  width: 81px;
+  justify-content: center;
+  align-items: center;
   font-family: "League Spartan", sans-serif;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: -0.25px;
   color: #0c0e16;
+  border-radius: 20px;
 }
 
 /* Invoice Item View Button */

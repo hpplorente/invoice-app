@@ -49,12 +49,16 @@ button {
   border-radius: 20px;
 }
 
-.newInvoice-modal .modal-content {
+/* .newInvoice-modal .modal-content {
   width: 504px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 56px;
   margin-bottom: 32px;
+} */
+
+.newInvoiceModal {
+  background-color: red;
 }
 
 .modal-input-fields {
@@ -68,14 +72,6 @@ button {
 
 .sender-client-container {
   margin-top: 48px;
-}
-
-h2 {
-  font-family: "League Spartan", sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: -0.25px;
-  color: #7c5dfa;
 }
 
 /* Input Field */
@@ -99,18 +95,41 @@ h2 {
   height: 35px;
   margin-top: 10px;
 }
+
+/* .cascader {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.cascader label {
+  font-family: "League Spartan", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #7e88c3;
+} */
+
 /* /////////////////////////// */
 
 .flex-inputs {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .newInvoice-btns {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+}
+
+.save-buttons {
+  display: flex;
+  flex-direction: row;
 }
 
 .discard-btn {

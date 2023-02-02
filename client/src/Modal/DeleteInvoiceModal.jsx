@@ -25,27 +25,27 @@ function DeleteInvoiceModal({
 
   return (
     <>
-      {deleteInvoiceModal && (
-        <InvoiceModal classes="deleteInvoice-modal">
-          <h1>Confirm Deletion</h1>
-          <p>
-            Are you sure you want to delete this invoice {}? This action cannot
-            be undone.{" "}
-          </p>
-          <div className="delete-button">
-            <InvoiceButton
-              label="Cancel"
-              classes="cancel"
-              onClick={() => setDeleteInvoiceModal(!deleteInvoiceModal)}
-            />
-            <InvoiceButton
-              label="Delete"
-              classes="delete"
-              onClick={() => deleteInvoice()}
-            />
-          </div>
-        </InvoiceModal>
-      )}
+      {/* {deleteInvoiceModal && ( */}
+      <InvoiceModal newInvoiceModal={deleteInvoiceModal} classes={""}>
+        <h1>Confirm Deletion</h1>
+        <p>
+          Are you sure you want to delete this invoice {}? This action cannot be
+          undone.{" "}
+        </p>
+        <div className="delete-button">
+          <InvoiceButton
+            label="Cancel"
+            classes="cancel"
+            onClick={() => setDeleteInvoiceModal(!deleteInvoiceModal)}
+          />
+          <InvoiceButton
+            label="Delete"
+            classes="delete"
+            onClick={() => deleteInvoice()}
+          />
+        </div>
+      </InvoiceModal>
+      {/* )} */}
     </>
   );
 }

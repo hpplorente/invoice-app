@@ -1,152 +1,164 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Axios from "axios";
+import { Form, Button, DatePicker, Input, Select } from "antd";
 import InvoiceModal from "../components/layout/InvoiceModal";
-import InputField from "../components/elements/InputField";
+import moment from "moment";
 
 function EditInvoiceModal({
   editInvoiceData,
   editInvoiceModal,
-  editInvoiceHandling,
   setEditInvoiceModal,
+  invoiceData,
 }) {
-  const saveChanges = () => {
+  const saveChanges = (data) => {
     Axios.put(
       `http://localhost:3001/invoice/api/${editInvoiceData._id}`,
-      editInvoiceData
+      data
     ).then((response) => {
       console.log("Invoice Edited!");
       setEditInvoiceModal(!editInvoiceModal);
     });
   };
 
-  const saveDraft = () => {
-    console.log("Edited!");
-  };
+  const [form] = Form.useForm();
+  console.log(invoiceData.paymentTerms);
+
+  useEffect(() => {
+    form.setFieldsValue({
+      senderStreetAddress: invoiceData.senderStreetAddress,
+      senderCity: invoiceData.senderCity,
+      senderPostCode: invoiceData.senderPostCode,
+      senderCountry: invoiceData.senderCountry,
+      clientName: invoiceData.clientName,
+      clientEmail: invoiceData.clientEmail,
+      clientStreetAddress: invoiceData.clientStreetAddress,
+      clientCity: invoiceData.clientCity,
+      clientPostCode: invoiceData.clientPostCode,
+      clientCountry: invoiceData.clientCountry,
+      createdAt: moment(invoiceData.createdAt),
+      paymentTerms: invoiceData.paymentTerms,
+      description: invoiceData.description,
+    });
+  }, []);
 
   return (
     <>
-      {editInvoiceModal && (
-        <InvoiceModal classes="newInvoice-modal">
-          <h1>New Invoice</h1>
-          <div className="modal-input-fields">
-            <div className="sender-client-container">
-              <h2>Bill from</h2>
-              <InputField
+      <InvoiceModal newInvoiceModal={editInvoiceModal} classes={""}>
+        <h1>{`Edit #${invoiceData.invoiceNumber}`}</h1>
+        <div className="invoiceForm">
+          <Form
+            onFinish={(data) => {
+              saveChanges(data);
+            }}
+            layout="vertical"
+            form={form}
+          >
+            <div className="form-container">
+              <h2>Bill From</h2>
+              <Form.Item
+                name="senderStreetAddress"
                 label="Street Address"
-                type="text"
-                changeHandler={editInvoiceHandling}
-                values={editInvoiceData.senderAddress.street}
-                names="senderAddress street"
-              />
+                rules={[
+                  { required: true, message: "Please enter street address" },
+                  { whitespace: true },
+                ]}
+                hasFeedback
+              >
+                <Input />
+              </Form.Item>
+
               <div className="flex-inputs">
-                <InputField
-                  label="City"
-                  type="text"
-                  changeHandler={editInvoiceHandling}
-                  values={editInvoiceData.senderAddress.city}
-                  names="senderAddress city"
-                />
-                <InputField
-                  label="Post Code"
-                  type="text"
-                  changeHandler={editInvoiceHandling}
-                  values={editInvoiceData.senderAddress.postCode}
-                  names="senderAddress postCode"
-                />
-                <InputField
-                  label="Country"
-                  type="text"
-                  changeHandler={editInvoiceHandling}
-                  values={editInvoiceData.senderAddress.country}
-                  names="senderAddress country"
-                />
+                <Form.Item name="senderCity" label="City">
+                  <Input />
+                </Form.Item>
+
+                <Form.Item name="senderPostCode" label="Post Code">
+                  <Input />
+                </Form.Item>
+
+                <Form.Item name="senderCountry" label="Country">
+                  <Input />
+                </Form.Item>
               </div>
-            </div>
-            <div className="sender-client-container">
-              <h2>Bill to</h2>
-              <InputField
-                label="Client's Name"
-                type="text"
-                changeHandler={editInvoiceHandling}
-                values={editInvoiceData.clientName}
-                names="clientName"
-              />
-              <InputField
+
+              <h2>Bill From</h2>
+              <Form.Item name="clientName" label="Client's Name">
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                name="clientEmail"
                 label="Client's Email"
-                type="text"
-                changeHandler={editInvoiceHandling}
-                values={editInvoiceData.clientEmail}
-                names="clientEmail"
-              />
-              <InputField
-                label="Street Address"
-                type="text"
-                changeHandler={editInvoiceHandling}
-                values={editInvoiceData.clientAddress.street}
-                names="clientAddress street"
-              />
+                hasFeedback
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter client's email address",
+                  },
+                  { type: "email", message: "Email is not valid" },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+
+              <Form.Item name="clientStreetAddress" label="Street Address">
+                <Input />
+              </Form.Item>
+
               <div className="flex-inputs">
-                <InputField
-                  label="City"
-                  type="text"
-                  changeHandler={editInvoiceHandling}
-                  values={editInvoiceData.clientAddress.city}
-                  names="clientAddress city"
-                />
-                <InputField
-                  label="Post Code"
-                  type="text"
-                  changeHandler={editInvoiceHandling}
-                  values={editInvoiceData.clientAddress.postCode}
-                  names="clientAddress postCode"
-                />
-                <InputField
-                  label="Country"
-                  type="text"
-                  changeHandler={editInvoiceHandling}
-                  values={editInvoiceData.clientAddress.country}
-                  names="clientAddress country"
-                />
+                <Form.Item name="clientCity" label="City">
+                  <Input />
+                </Form.Item>
+
+                <Form.Item name="clientPostCode" label="PostCode">
+                  <Input />
+                </Form.Item>
+
+                <Form.Item name="clientCountry" label="Country">
+                  <Input />
+                </Form.Item>
               </div>
+              <div className="flex-inputs">
+                <Form.Item name="createdAt" label="Invoice Date">
+                  <DatePicker picker="date" />
+                </Form.Item>
+
+                <Form.Item name="paymentTerms" label="Payment Terms">
+                  <Select>
+                    <Select.Option value="1" type="number">
+                      Net 1 Day
+                    </Select.Option>
+                    <Select.Option value="7" type="number">
+                      Net 7 Days
+                    </Select.Option>
+                    <Select.Option value="14" type="number">
+                      Net 14 Days
+                    </Select.Option>
+                    <Select.Option value="30" type="number">
+                      Net 30 Days
+                    </Select.Option>
+                  </Select>
+                </Form.Item>
+              </div>
+              <Form.Item name="description" label="Project Description">
+                <Input />
+              </Form.Item>
             </div>
-            <div className="flex-inputs">
-              <InputField
-                label="Invoice Date"
-                type="date"
-                changeHandler={editInvoiceHandling}
-                values={editInvoiceData.createdAt}
-                names="createdAt"
-              />
-              <InputField
-                label="Payment Terms"
-                type="text"
-                changeHandler={editInvoiceHandling}
-                values={editInvoiceData.paymentTerms}
-                names="paymentTerms"
-              />
+
+            <div className="invoiceForm-btns">
+              <Form.Item>
+                <Button onClick={() => setEditInvoiceModal(!editInvoiceModal)}>
+                  Discard
+                </Button>
+              </Form.Item>
+
+              <Form.Item>
+                <Button htmlType="submit">Save & Send</Button>
+              </Form.Item>
             </div>
-            <InputField
-              label="Project Description"
-              type="text"
-              changeHandler={editInvoiceHandling}
-              values={editInvoiceData.description}
-              names="description"
-            />
-            <div className="itemList-container">
-              <p>Item List</p>
-              <button>+ Add New Item</button>
-            </div>
-          </div>
-          <div className="newInvoice-btns">
-            <button className="draft-btn" onClick={() => saveDraft()}>
-              Save as Draft
-            </button>
-            <button className="save-btn" onClick={() => saveChanges()}>
-              Save Changes
-            </button>
-          </div>
-        </InvoiceModal>
-      )}
+          </Form>
+        </div>
+      </InvoiceModal>
     </>
   );
 }

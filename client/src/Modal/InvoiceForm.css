@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&display=swap");
+
+.invoiceForm h2 {
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: -0.25px;
+  color: #7c5dfa;
+}
+
+.form-container {
+  max-height: 75vh;
+  overflow-y: scroll;
+}
+
+.form-container::-webkit-scrollbar {
+  display: none;
+}
+
+label {
+  font-family: "League Spartan", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  color: #7e88c3;
+}
+
+.flex-inputs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.invoiceForm-btns {
+  display: flex;
+}

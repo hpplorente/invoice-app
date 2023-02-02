@@ -1,15 +1,13 @@
 import React from "react";
 import { Button, Modal } from "antd";
 
-function InvoiceModal({ children, classes }) {
+function InvoiceModal({ children, classes, newInvoiceModal }) {
   return (
-    <>
-      <div className="overlay">
-        <div className={classes}>
-          <div className="modal-content">{children}</div>
-        </div>
+    <Modal open={newInvoiceModal} footer={null} closable={false}>
+      <div className={classes}>
+        <div className="modal-content">{children}</div>
       </div>
-    </>
+    </Modal>
   );
 }
 

@@ -4,6 +4,9 @@ import InvoiceButton from "../elements/InvoiceButton";
 import "./InvoiceDetails.css";
 import DeleteInvoiceModal from "../../Modal/DeleteInvoiceModal";
 import EditInvoiceModal from "../../Modal/EditInvoiceModal";
+import moment from "moment";
+import Axios from "axios";
+import { Button } from "antd";
 
 function InvoiceDetails() {
   const location = useLocation();
@@ -14,60 +17,31 @@ function InvoiceDetails() {
   const [editInvoiceModal, setEditInvoiceModal] = useState(false);
   const [editInvoiceData, setEditInvoiceData] = useState(invoice);
 
-  const editInvoiceHandling = (e) => {
-    const { name, value } = e.target;
-    const nameSplit = name.split(" ");
-
-    if (nameSplit.length > 1) {
-      nameSplit[0] === "senderAddress"
-        ? setEditInvoiceData((prevEditInvoiceData) => {
-            return {
-              ...prevEditInvoiceData,
-              [nameSplit[0]]: {
-                ...prevEditInvoiceData.senderAddress,
-                [nameSplit[1]]: value,
-              },
-            };
-          })
-        : setEditInvoiceData((prevEditInvoiceData) => {
-            return {
-              ...prevEditInvoiceData,
-              [nameSplit[0]]: {
-                ...prevEditInvoiceData.clientAddress,
-                [nameSplit[1]]: value,
-              },
-            };
-          });
-    } else {
-      setEditInvoiceData((prevEditInvoiceData) => {
-        return {
-          ...prevEditInvoiceData,
-          [name]: value,
-        };
-      });
-    }
+  const markAsPaid = () => {
+    Axios.put(`http://localhost:3001/invoice/api/${editInvoiceData._id}`, {
+      ...invoice,
+      status: "paid",
+    }).then((response) => {
+      console.log("Invoice Edited!");
+    });
   };
 
   return (
     <>
       <div className="content-container">
-        <div className="back-btn" onClick={() => navigate("/")}>
-          <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M6.342.886L2.114 5.114l4.228 4.228"
-              stroke="#9277FF"
-              stroke-width="2"
-              fill="none"
-              fill-rule="evenodd"
-            />
-          </svg>
-          <p>Go Back</p>
-        </div>
+        <Button
+          ghost
+          type="primary"
+          size="small"
+          className="back-btn"
+          onClick={() => navigate("/")}
+        >
+          Go Back
+        </Button>
         <div className="details-header-container">
           <div className="details-status">
             <h6>Status</h6>
             <p className={`status-${invoice.status}`}>
-              <div className={invoice.status}></div>
               <span>•</span>
               {invoice.status}
             </p>
@@ -85,7 +59,11 @@ function InvoiceDetails() {
               classes={""}
             />
 
-            <InvoiceButton label={"Mark as Paid"} classes={""} onClick={""} />
+            <InvoiceButton
+              label={"Mark as Paid"}
+              classes={""}
+              onClick={() => markAsPaid()}
+            />
           </div>
         </div>
         <div className="invoice-data-container">
@@ -95,17 +73,17 @@ function InvoiceDetails() {
               <h6 className="description">{invoice.description}</h6>
             </div>
             <div className="senderAddress">
-              <h6>{invoice.senderAddress.street}</h6>
-              <h6>{invoice.senderAddress.city}</h6>
-              <h6>{invoice.senderAddress.postCode}</h6>
-              <h6>{invoice.senderAddress.country}</h6>
+              <h6>{invoice.senderStreetAddress}</h6>
+              <h6>{invoice.senderCity}</h6>
+              <h6>{invoice.senderPostCode}</h6>
+              <h6>{invoice.senderCountry}</h6>
             </div>
           </div>
           <div className="clientDetails-container">
             <div className="invoice--payment--date">
               <div className="invoiceDate">
                 <h6>Invoice Date</h6>
-                <p>{invoice.createdAt}</p>
+                <p>{moment(invoice.createdAt).format("ll")}</p>
               </div>
               <div className="paymentDue">
                 <h6>Payment Due</h6>
@@ -115,10 +93,10 @@ function InvoiceDetails() {
             <div className="clientAddres">
               <h6>Bill To</h6>
               <p>{invoice.clientName}</p>
-              <h6>{invoice.clientAddress.street}</h6>
-              <h6>{invoice.clientAddress.city}</h6>
-              <h6>{invoice.clientAddress.postCode}</h6>
-              <h6>{invoice.clientAddress.country}</h6>
+              <h6>{invoice.clientStreetAddress}</h6>
+              <h6>{invoice.clientCity}</h6>
+              <h6>{invoice.clientPostCode}</h6>
+              <h6>{invoice.clientCountry}</h6>
             </div>
             <div className="clientEmail">
               <h6>Sent to</h6>
@@ -134,10 +112,9 @@ function InvoiceDetails() {
         setDeleteInvoiceModal={setDeleteInvoiceModal}
       />
       <EditInvoiceModal
-        // invoiceData={invoice}
+        invoiceData={invoice}
         editInvoiceData={editInvoiceData}
         editInvoiceModal={editInvoiceModal}
-        editInvoiceHandling={editInvoiceHandling}
         setEditInvoiceModal={setEditInvoiceModal}
       />
     </>
