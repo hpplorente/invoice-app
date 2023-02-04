@@ -1,11 +1,20 @@
 const asyncHandler = require("express-async-handler");
 const Invoice = require("../models/Invoice");
+const mongoose = require("mongoose");
 // @desc Get Invoice
 //@route GET /api/goals
 //access Private
-const getInvoice = asyncHandler(async (req, res) => {
+const getInvoiceList = asyncHandler(async (req, res) => {
   const invoice = await Invoice.find();
 
+  res.status(200).json(invoice);
+});
+
+const getInvoice = asyncHandler(async (req, res) => {
+  const invoiceId = mongoose.Types.ObjectId(req.params.id);
+  const invoice = await Invoice.findById(invoiceId);
+  console.log(invoice);
+  console.log(req.params.id);
   res.status(200).json(invoice);
 });
 
@@ -62,6 +71,7 @@ const deleteInvoice = asyncHandler(async (req, res) => {
 
 module.exports = {
   getInvoice,
+  getInvoiceList,
   setInvoice,
   updateInvoice,
   deleteInvoice,

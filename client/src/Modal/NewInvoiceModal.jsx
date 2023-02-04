@@ -11,7 +11,7 @@ function NewInvoiceModal({
   invoiceObject,
   setNewInvoiceModal,
   newInvoiceModal,
-  toggleNewInvoice,
+  getInvoiceList,
 }) {
   const navigate = useNavigate();
 

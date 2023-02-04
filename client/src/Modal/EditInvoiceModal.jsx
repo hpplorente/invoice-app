@@ -3,25 +3,27 @@ import Axios from "axios";
 import { Form, Button, DatePicker, Input, Select } from "antd";
 import InvoiceModal from "../components/layout/InvoiceModal";
 import moment from "moment";
+import ItemList from "../components/elements/ItemList";
 
 function EditInvoiceModal({
-  editInvoiceData,
   editInvoiceModal,
   setEditInvoiceModal,
   invoiceData,
+  setFetchData,
 }) {
   const saveChanges = (data) => {
-    Axios.put(
-      `http://localhost:3001/invoice/api/${editInvoiceData._id}`,
-      data
-    ).then((response) => {
+    const paymentDue = moment(data.createdAt).add(data.paymentTerms, "days");
+    Axios.put(`http://localhost:3001/invoice/api/${invoiceData._id}`, {
+      ...data,
+      paymentDue: paymentDue,
+    }).then((response) => {
       console.log("Invoice Edited!");
       setEditInvoiceModal(!editInvoiceModal);
+      setFetchData(!setFetchData);
     });
   };
 
   const [form] = Form.useForm();
-  console.log(invoiceData.paymentTerms);
 
   useEffect(() => {
     form.setFieldsValue({
@@ -38,6 +40,7 @@ function EditInvoiceModal({
       createdAt: moment(invoiceData.createdAt),
       paymentTerms: invoiceData.paymentTerms,
       description: invoiceData.description,
+      itemList: invoiceData.itemList,
     });
   }, []);
 
@@ -143,6 +146,8 @@ function EditInvoiceModal({
               <Form.Item name="description" label="Project Description">
                 <Input />
               </Form.Item>
+              <h5>Item List</h5>
+              <ItemList />
             </div>
 
             <div className="invoiceForm-btns">

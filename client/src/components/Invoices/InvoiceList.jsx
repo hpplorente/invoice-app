@@ -1,30 +1,21 @@
-import React, { useEffect, useState } from "react";
-import Axios from "axios";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import moment from "moment";
 import "./Invoice.css";
 
-function InvoiceList() {
+function InvoiceList({ getInvoiceList, invoiceList, newInvoiceModal }) {
   const navigate = useNavigate();
-
-  const [invoiceList, setInvoiceList] = useState([]);
-
-  const getInvoiceList = () => {
-    Axios.get("http://localhost:3001/invoice/api").then((response) => {
-      setInvoiceList(response.data);
-    });
-  };
 
   useEffect(() => {
     console.log("Effect ran!");
     getInvoiceList();
-  }, []);
+  }, [newInvoiceModal]);
 
   const invoiceItem = invoiceList.map((data) => {
     return (
       <div className="item-container">
         <p>{data.invoiceNumber}</p>
-        <p>{data.paymentDue}</p>
+        <p>{moment(data.paymentDue).format("ll")}</p>
         <p>{data.clientName}</p>
         <p>{data.total}</p>
         <p>{data.status}</p>

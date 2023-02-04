@@ -56,6 +56,14 @@ const InvoiceSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  itemList: [
+    {
+      itemName: String,
+      itemQuantity: Number,
+      itemPrice: Number,
+      itemTotal: Number,
+    },
+  ],
 });
 
 module.exports = mongoose.model("invoiceData", InvoiceSchema);

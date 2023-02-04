@@ -1,5 +1,5 @@
 .sidebar {
-  position: absolute;
+  position: static;
   width: 103px;
   height: 100vh;
   background-color: #373b53;

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Button, Space } from "antd";
 
-function ItemList() {
+function ItemList({ form }) {
+  const [totals, setTotals] = useState({});
+
   return (
     <>
       <Form.List name="itemList">
@@ -10,17 +12,40 @@ function ItemList() {
             {fields.map((field, index) => {
               return (
                 <Space direction="horizontal">
-                  <Form.Item name={[field.name, "ItemName"]}>
+                  <Form.Item name={[field.name, "itemName"]}>
                     <Input placeholder="Item Name" />
                   </Form.Item>
-                  <Form.Item name={[field.name, "Quantity"]}>
-                    <Input placeholder="Qty" />
+                  <Form.Item name={[field.name, "itemQuantity"]}>
+                    <Input
+                      placeholder="Qty"
+                      type="number"
+                      onChange={() => {
+                        const values = form.getFieldsValue();
+                        console.log(values.itemList[index].itemQuantity);
+                      }}
+                    />
                   </Form.Item>
-                  <Form.Item name={[field.name, "Price"]}>
-                    <Input placeholder="Price" />
+                  <Form.Item name={[field.name, "itemPrice"]}>
+                    <Input
+                      placeholder="Price"
+                      type="number"
+                      onChange={() => {
+                        const values = form.getFieldsValue();
+                        if (
+                          values.itemList[index].itemQuantity &&
+                          values.itemList[index].itemPrice
+                        ) {
+                          form.setFieldsValue({
+                            [`itemList.${index}.itemTotal`]:
+                              values.itemList[index].itemPrice *
+                              values.itemList[index].itemQuantity,
+                          });
+                        }
+                      }}
+                    />
                   </Form.Item>
-                  <Form.Item name={[field.name, "Total"]}>
-                    <Input placeholder="Total" />
+                  <Form.Item name={[field.name, "itemTotal"]}>
+                    <Input placeholder="Total" disabled type="number" />
                   </Form.Item>
                   <Form.Item>
                     <Button

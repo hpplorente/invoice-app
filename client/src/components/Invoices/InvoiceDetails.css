@@ -10,6 +10,25 @@
   border-radius: 8px;
   margin-top: 32px;
 }
+/* ////----BUTTONS----- */
+.editBtn {
+  background-color: rgba(249, 250, 254, 1);
+  color: rgba(126, 136, 195, 1);
+  letter-spacing: 0.5px;
+}
+
+.deleteBtn {
+  background-color: rgba(236, 87, 87, 1);
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+.paidBtn {
+  background-color: rgba(124, 93, 250, 1);
+  color: white;
+  letter-spacing: 0.5px;
+}
+
 /* ///////////////////---Status----/////////////////////////////////// */
 .details-status {
   width: 159px;
@@ -114,6 +133,7 @@
 .invoice-data-container {
   background-color: white;
   margin-top: 24px;
+  padding-bottom: 48px;
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
   border-radius: 8px;
 }
@@ -126,6 +146,13 @@
 .id--description {
   margin-left: 48px;
   margin-top: 48px;
+}
+
+.id--description .id {
+  font-family: "League Spartan", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .id--description p {
@@ -142,10 +169,9 @@
 }
 
 h6 {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   color: #7e88c3;
-
   margin-top: 2.5px;
   margin-bottom: 2.5px;
 }
@@ -160,7 +186,7 @@ h6 {
 
 .clientDetails-container p {
   font-size: 15px;
-  font-family: "Spartan", sans-serif;
+  font-family: "League Spartan", sans-serif;
   font-weight: 700;
   letter-spacing: -0.3125px;
   color: #0c0e16;
@@ -172,4 +198,57 @@ h6 {
   width: 634px;
   background-color: #f9fafe;
   margin-bottom: 48px;
+}
+
+.itemList-container {
+  width: 634px;
+  margin-left: 48px;
+  margin-right: 48px;
+  margin-top: 45px;
+  padding-top: 32px;
+  background-color: #f9fafe;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.itemList-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: 32px;
+  margin-bottom: 32px;
+}
+
+.itemList-content p {
+  font-family: "League Spartan", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.amountDue {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 32px 24px 32px;
+  background-color: rgba(55, 59, 83, 1);
+  border-radius: 0px 0px 8px 8px;
+}
+
+.amountDue p {
+  font-family: "League Spartan", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 7px;
+  letter-spacing: 1px;
+}
+
+.amountDue h2 {
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: white;
+  margin-top: 7px;
+  letter-spacing: 1px;
 }

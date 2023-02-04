@@ -5,34 +5,33 @@ import { Form, Button, DatePicker, Input, Select } from "antd";
 import { v4 as uuid } from "uuid";
 import "./InvoiceForm.css";
 import ItemList from "../components/elements/ItemList";
-import { DisabledContextProvider } from "antd/es/config-provider/DisabledContext";
+import moment from "moment";
 
 function InvoiceForm({ setNewInvoiceModal }) {
   const navigate = useNavigate;
-  //   const [invoiceData, setInvoiceData] = useState();
   const unique_id = uuid();
   const invoiceId = unique_id.slice(0, 5);
+  const [form] = Form.useForm();
 
   const saveInvoice = (data) => {
     console.log(data);
+    const paymentDue = moment(data.createdAt).add(data.paymentTerms, "days");
     Axios.post("http://localhost:3001/invoice/api", {
       ...data,
       status: "pending",
-      invoiceNumber: invoiceId,
+      invoiceNumber: invoiceId.toUpperCase(),
+      paymentDue: paymentDue,
     }).then((response) => {
       console.log(response.data);
       setNewInvoiceModal((prevNewInvoiceModal) => !prevNewInvoiceModal);
+      form.resetFields();
     });
   };
-
-  // const discard = () => {
-  //   setNewInvoiceModal((prevNewInvoiceModal) => !prevNewInvoiceModal);
-  //   form.current?.resetFields();
-  // };
 
   return (
     <div className="invoiceForm">
       <Form
+        form={form}
         onFinish={(data) => {
           saveInvoice(data);
         }}
@@ -129,17 +128,18 @@ function InvoiceForm({ setNewInvoiceModal }) {
             <Input />
           </Form.Item>
           <h5>Item List</h5>
-          <ItemList />
+          <ItemList form={form} />
         </div>
 
         <div className="invoiceForm-btns">
           <Form.Item>
             <Button
-              onClick={() =>
+              onClick={() => {
                 setNewInvoiceModal(
                   (prevNewInvoiceModal) => !prevNewInvoiceModal
-                )
-              }
+                );
+                form.resetFields();
+              }}
             >
               Discard
             </Button>

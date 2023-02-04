@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import InvoiceButton from "../elements/InvoiceButton";
 import NewInvoiceModal from "../../Modal/NewInvoiceModal";
 import "./Invoice.css";
 
-function InvoiceHeader() {
-  const [newInvoiceModal, setNewInvoiceModal] = useState(false);
-
+function InvoiceHeader({
+  getInvoiceList,
+  setNewInvoiceModal,
+  newInvoiceModal,
+  invoiceList,
+}) {
+  console.log(invoiceList.length);
   return (
     <>
       <div className="header-container">
         <div className="invoice-title">
           <h3>Invoices</h3>
-          <p>There are (?) total invoices</p>
+          <p>There are {invoiceList.length} total invoices</p>
         </div>
         <div className="invoice-btn">
           <InvoiceButton
@@ -24,6 +28,7 @@ function InvoiceHeader() {
       <NewInvoiceModal
         setNewInvoiceModal={setNewInvoiceModal}
         newInvoiceModal={newInvoiceModal}
+        getInvoiceList={getInvoiceList}
       />
     </>
   );
