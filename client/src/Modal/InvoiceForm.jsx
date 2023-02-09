@@ -16,7 +16,7 @@ function InvoiceForm({ setNewInvoiceModal }) {
   const saveInvoice = (data) => {
     console.log(data);
     const paymentDue = moment(data.createdAt).add(data.paymentTerms, "days");
-    Axios.post("http://localhost:3001/invoice/api", {
+    Axios.post("https://invoice-app-api.onrender.com/invoice/api", {
       ...data,
       status: "pending",
       invoiceNumber: invoiceId.toUpperCase(),

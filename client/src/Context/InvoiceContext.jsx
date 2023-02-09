@@ -5,9 +5,11 @@ const InvoiceContext = createContext({});
 
 function InvoiceContextProvider(props) {
   const getInvoiceData = () => {
-    Axios.get("http://localhost:3001/invoice/api").then((response) => {
-      setInvoiceList(response.data);
-    });
+    Axios.get("https://invoice-app-api.onrender.com/invoice/api").then(
+      (response) => {
+        setInvoiceList(response.data);
+      }
+    );
   };
 
   const [invoiceList, setInvoiceList] = useState([]);

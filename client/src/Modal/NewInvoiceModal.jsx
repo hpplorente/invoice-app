@@ -17,12 +17,13 @@ function NewInvoiceModal({
 
   // ///// Saving Invoice Draft
   const saveDraft = () => {
-    Axios.post("http://localhost:3001/draft/api", invoiceData).then(
-      (response) => {
-        setNewInvoiceModal((prevNewInvoiceModal) => !prevNewInvoiceModal);
-        setInvoiceData(invoiceObject);
-      }
-    );
+    Axios.post(
+      "https://invoice-app-api.onrender.com/draft/api",
+      invoiceData
+    ).then((response) => {
+      setNewInvoiceModal((prevNewInvoiceModal) => !prevNewInvoiceModal);
+      setInvoiceData(invoiceObject);
+    });
   };
 
   return (

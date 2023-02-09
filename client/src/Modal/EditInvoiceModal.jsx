@@ -13,10 +13,13 @@ function EditInvoiceModal({
 }) {
   const saveChanges = (data) => {
     const paymentDue = moment(data.createdAt).add(data.paymentTerms, "days");
-    Axios.put(`http://localhost:3001/invoice/api/${invoiceData._id}`, {
-      ...data,
-      paymentDue: paymentDue,
-    }).then((response) => {
+    Axios.put(
+      `https://invoice-app-api.onrender.com/invoice/api/${invoiceData._id}`,
+      {
+        ...data,
+        paymentDue: paymentDue,
+      }
+    ).then((response) => {
       console.log("Invoice Edited!");
       setEditInvoiceModal(!editInvoiceModal);
       setFetchData(!setFetchData);
