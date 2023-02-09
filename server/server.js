@@ -12,7 +12,7 @@ connectDB();
 
 app.use(
   cors({
-    origin: ["http://localhost:8000", "https://invoice-app.onrender.com"],
+    origin: ["http://localhost:3000", "https://invoice-app-uga8.onrender.com"],
   })
 );
 
