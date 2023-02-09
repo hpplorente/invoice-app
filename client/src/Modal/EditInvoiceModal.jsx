@@ -147,7 +147,7 @@ function EditInvoiceModal({
                 <Input />
               </Form.Item>
               <h5>Item List</h5>
-              <ItemList />
+              <ItemList form={form} />
             </div>
 
             <div className="invoiceForm-btns">

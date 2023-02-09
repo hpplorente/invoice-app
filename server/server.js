@@ -10,7 +10,11 @@ const cors = require("cors");
 
 connectDB();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:8000", "https://invoice-app.onrender.com"],
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -19,6 +23,6 @@ app.use("/invoice/api", require("./routes/invoiceRoutes"));
 
 app.use(errorHandler);
 
-app.listen(3001, () => {
+app.listen(3000, () => {
   console.log("Server listening on port 3001");
 });
