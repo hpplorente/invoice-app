@@ -15,12 +15,12 @@ function DeleteInvoiceModal({
   const navigate = useNavigate();
 
   const deleteInvoice = () => {
-    Axios.delete(`http://localhost:3001/invoice/api/${invoiceId}`).then(
-      (response) => {
-        navigate("/");
-        setDeleteInvoiceModal(!deleteInvoiceModal);
-      }
-    );
+    Axios.delete(
+      `https://invoice-app-api.onrender.com/invoice/api/${invoiceId}`
+    ).then((response) => {
+      navigate("/");
+      setDeleteInvoiceModal(!deleteInvoiceModal);
+    });
   };
 
   return (
