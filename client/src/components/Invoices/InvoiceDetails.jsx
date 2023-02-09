@@ -21,9 +21,12 @@ function InvoiceDetails() {
   const [fetchData, setFetchData] = useState(false);
   // console.log(invoiceDetails.itemList[0].itemName);
   const markAsPaid = () => {
-    Axios.put(`http://localhost:3001/invoice/api/${invoiceDetails._id}`, {
-      status: "paid",
-    }).then((response) => {
+    Axios.put(
+      `https://invoice-app-api.onrender.com/invoice/api/${invoiceDetails._id}`,
+      {
+        status: "paid",
+      }
+    ).then((response) => {
       setFetchData(!fetchData);
     });
   };
@@ -34,11 +37,11 @@ function InvoiceDetails() {
   }, [fetchData]);
 
   const getInvoiceData = () => {
-    Axios.get(`http://localhost:3001/invoice/api/${invoiceDetails._id}`).then(
-      (response) => {
-        setInvoiceDetails(response.data);
-      }
-    );
+    Axios.get(
+      `https://invoice-app-api.onrender.com/invoice/api/${invoiceDetails._id}`
+    ).then((response) => {
+      setInvoiceDetails(response.data);
+    });
   };
 
   return (
